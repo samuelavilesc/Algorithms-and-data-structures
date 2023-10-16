@@ -181,12 +181,12 @@ int main() {
             juanagra();
         }else if(comando == "<saco>"){
             saco();
-        }else if(comando == "<consomé>"){
+        }else if(normalizar(comando) == "<CONSOME>"){
             consome();
         }else if(comando == "<alarga>"){
             alarga();
         }else if(comando == "<exit>"){
-            cout << "Saliendo..." ;
+            cout << "Saliendo..."<<endl;
             exit(0);
         }else{
             continue;
