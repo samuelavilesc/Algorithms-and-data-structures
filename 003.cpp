@@ -97,11 +97,7 @@ void buscar(){
     cin>>palabra;
     palabra = normalizar(palabra);
     cout<<"Buscando: ";
-    if(diccionario.find(palabra) == diccionario.end()){
-        cout <<normalizar(palabra)<< " -> No encontrada" << endl;
-    }else{
-        cout <<normalizar(palabra)<<" ->  encontrada" << endl;
-    }
+    cout <<normalizar(palabra)<< " -> No encontrada" << endl;
 }
 void partidas(){
     cout<<"Partidas: ";
@@ -125,19 +121,17 @@ void alocado(){
     cout<<"No implementado"<<endl;
 }
 void cesar(){
-    cout<<"César: ";
     string palabra;
     cin>>palabra;
     palabra = normalizar(palabra);
-    cout<<palabra<<endl;
+    cout<<"César: "<<palabra<<endl;
     cout<<"No implementado"<<endl;
 }
 void juanagra(){
-    cout<<"Juanagrama: ";
     string palabra;
     cin>>palabra;
     palabra = normalizar(palabra);
-    cout<<palabra<<endl;
+    cout<<"Juanagrama: "<<palabra<<endl;
     cout<<"No implementado"<<endl;
 }
 void saco(){
@@ -166,24 +160,29 @@ void alarga(){
     cout<<palabra<<endl;
     cout<<"No implementado"<<endl;
 }
+void vaciar(){
+    cout<<"Vaciando"<<endl;
+    diccionario.clear();
+    cout << "Total diccionario: " << diccionario.size() <<" palabras"<< endl;cout<<"Vaciando"<<endl;
+    diccionario.clear();
+    cout << "Total diccionario: " << diccionario.size() <<" palabras"<< endl;
+}
 int main() {
     string comando;
     while(cin>>comando){
-
+        
     
         if(comando == "<insertar>"){
             insertar();
         }else if(comando == "<vaciar>"){
-            cout<<"Vaciando"<<endl;
-            diccionario.clear();
-            cout << "Total diccionario: " << diccionario.size() <<" palabras"<< endl;
+            vaciar();
         }else if(comando == "<buscar>"){
             buscar();
         }else if(comando == "<partidas>"){
            partidas();
         }else if(comando == "<alocado>"){
             alocado();
-        }else if(comando == "<césar>"){
+        }else if(normalizar(comando) == "<CESAR>"){
             cesar();    
         }else if(comando == "<juanagra>"){
             juanagra();
@@ -195,9 +194,9 @@ int main() {
             alarga();
         }else if(comando == "<exit>"){
             cout << "Saliendo..." << endl;
-            exit(1);
+            exit(0);
         }else{
-            cout << "Opcion no válida" << endl;
+            continue;
         }
     }
     return 0;
