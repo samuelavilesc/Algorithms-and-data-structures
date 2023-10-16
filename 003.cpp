@@ -96,12 +96,11 @@ void buscar(){
     string palabra;
     cin>>palabra;
     palabra = normalizar(palabra);
-    cout<<"Buscando: ";
-    cout <<normalizar(palabra)<< " -> No encontrada" << endl;
+    cout <<"Buscando: "<<normalizar(palabra)<< " -> No encontrada" << endl;
 }
 void partidas(){
-    cout<<"Partidas: ";
     string palabra;
+    cout<<"Partidas:";
     while (cin>>palabra)
     {
         if(palabra == "</partidas>"){
@@ -109,15 +108,14 @@ void partidas(){
             break;
         }
         palabra = normalizar(palabra);
-        cout<<palabra<<" ";
+        cout<<" "<<palabra;
     }
 }
 void alocado(){
-    cout<<"Alocado: ";
     string palabra;
     cin>>palabra;
     palabra = normalizar(palabra);
-    cout<<palabra<<endl;
+    cout<<"Alocado: "<<palabra<<endl;
     cout<<"No implementado"<<endl;
 }
 void cesar(){
@@ -135,35 +133,30 @@ void juanagra(){
     cout<<"No implementado"<<endl;
 }
 void saco(){
-    cout<<"Saco: ";
     string palabra;
     string palabra2;
     cin>>palabra>>palabra2;
     palabra = normalizar(palabra);
     palabra2=normalizar(palabra2);
-    cout<<palabra<<" "<<palabra2<<endl;
+    cout<<"Saco: "<<palabra<<" "<<palabra2<<endl;
     cout<<"No implementado"<<endl;
 }
 void consome(){
-    cout<<"Consomé: ";
     string palabra;
     cin>>palabra;
     palabra = normalizar(palabra);
-    cout<<palabra<<endl;
+    cout<<"Consomé: "<<palabra<<endl;
     cout<<"No implementado"<<endl;
 }
 void alarga(){
-    cout<<"Alarga: ";
     string palabra;
     cin>>palabra;
     palabra = normalizar(palabra);
-    cout<<palabra<<endl;
+    cout<<"Alarga: "<<palabra<<endl;
     cout<<"No implementado"<<endl;
 }
 void vaciar(){
     cout<<"Vaciando"<<endl;
-    diccionario.clear();
-    cout << "Total diccionario: " << diccionario.size() <<" palabras"<< endl;cout<<"Vaciando"<<endl;
     diccionario.clear();
     cout << "Total diccionario: " << diccionario.size() <<" palabras"<< endl;
 }
@@ -193,7 +186,7 @@ int main() {
         }else if(comando == "<alarga>"){
             alarga();
         }else if(comando == "<exit>"){
-            cout << "Saliendo..." << endl;
+            cout << "Saliendo..." ;
             exit(0);
         }else{
             continue;
