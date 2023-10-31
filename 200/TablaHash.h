@@ -5,7 +5,7 @@
 #include <iostream>
 #include <string>
 #include <list>
-
+#include <unordered_map>
 using namespace std;
 
  #define TAM 1024

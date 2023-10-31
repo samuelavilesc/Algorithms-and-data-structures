@@ -1,5 +1,4 @@
 #include "diccionarioPalabras.h"
-
 using namespace std;
 diccionarioPalabras::diccionarioPalabras(){
     this->tabla=TablaHash();

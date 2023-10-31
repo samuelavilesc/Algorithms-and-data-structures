@@ -9,19 +9,10 @@ TablaHash::TablaHash (){
 }
 //TODO: revisar funcion de dispersion no funciona bien con caracteres especiales
 int TablaHash::hash(string palabra) {
-    int suma = 0;
-
-    for(int i = 0; i < palabra.length(); i++) {
-        char byte1 = palabra[i];
-            if(byte1=='\xC3'){
-                suma = suma + 10;
-                continue;
-            }
-        int codigo = palabra[i];
-        suma = (suma * 37) + codigo; 
-    }
-
-    return suma % TAM;
+    
+unordered_map<string,string> map;
+auto fun=map.hash_function();
+return fun(palabra) % TAM;
 }
 
  void TablaHash::inserta (string palabra){
