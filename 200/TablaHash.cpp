@@ -9,10 +9,17 @@ TablaHash::TablaHash (){
 }
 //TODO: revisar funcion de dispersion no funciona bien con caracteres especiales
 int TablaHash::hash(string palabra) {
-    
-unordered_map<string,string> map;
-auto fun=map.hash_function();
-return fun(palabra) % TAM;
+int suma = 0;
+
+    for(int i = 0; i < palabra.length(); i++) {
+        int codigo = palabra[i];
+        suma = (suma * 37) + codigo; 
+    }
+
+	if(suma < 0){
+		suma = suma * -1;
+	}
+    return suma % TAM;
 }
 
  void TablaHash::inserta (string palabra){
