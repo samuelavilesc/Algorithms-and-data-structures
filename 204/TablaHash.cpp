@@ -1,5 +1,5 @@
 #include "TablaHash.h"
-#include<unordered_map>
+
 int TablaHash::nTotal(){
     return nElem;
 }
@@ -7,11 +7,19 @@ int TablaHash::nTotal(){
 TablaHash::TablaHash (){
     nElem = 0;
 }
-int TablaHash::hash(string palabra){
-  
-unordered_map<string,string> map;
-auto fun=map.hash_function();
-return fun(palabra) % TAM;
+
+int TablaHash::hash(string palabra) {
+int suma = 0;
+
+    for(int i = 0; i < palabra.length(); i++) {
+        int codigo = palabra[i];
+        suma = (suma * 37) + codigo; 
+    }
+
+	if(suma < 0){
+		suma = suma * -1;
+	}
+    return suma % TAM;
 }
 
  void TablaHash::inserta (string palabra){
@@ -32,7 +40,7 @@ return fun(palabra) % TAM;
 	}
  }
 
- string TablaHash::consulta (string nombre){
+ bool TablaHash::consulta (string nombre){
     int id = hash(nombre);
 
     list<string>::iterator itLista = listaPalabras[id].begin();
@@ -41,10 +49,9 @@ return fun(palabra) % TAM;
 		itLista++;
 	}
 	if (itLista == listaPalabras[id].end() || (*itLista).compare(nombre) > 0){
-		return NULL;
+		return false;
 	} else {
-		string encontrado = (*itLista);
-		return encontrado;
+		return true;
 	}
  }
 

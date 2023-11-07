@@ -1,24 +1,25 @@
-#ifndef TABLAHASH_H
-#define TABLAHASH_H
+#ifndef TABLAJUANAGRAMA_H
+#define TABLAJUANAGRAMA_H
+
 #include <iostream>
 #include <string>
 #include <list>
-#include <unordered_map>
 using namespace std;
 
- #define TAM 1024
+#define TAMANO 1024
 
-class TablaHash {
+class tablaJuanagrama {
   private:
-     list<string> listaPalabras[TAM];
+     list<string> listaPalabras[TAMANO];
      int nElem;
   public:
-     TablaHash ();
+     tablaJuanagrama ();
      int hash (string k);
      void inserta (string palabra);
      bool consulta(string palabra);
      void vacia (void);
      int nTotal (void);
+     string anagrama(string palabra);
 };
 
 #endif
