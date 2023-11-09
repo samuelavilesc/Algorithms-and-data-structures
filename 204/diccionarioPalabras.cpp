@@ -21,8 +21,7 @@ int diccionarioPalabras::devolverTamano(){
     return tabla.nTotal();
 }
 string diccionarioPalabras::juanagra(string palabra){
-    string palabraNormalizada = normalizarPalabra(palabra);
-    string anagrama = Juanagrama.anagrama(palabraNormalizada);
+    string anagrama = Juanagrama.anagrama(palabra);
     if(tabla.consulta(anagrama)){
             return anagrama;
     }

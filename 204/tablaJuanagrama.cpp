@@ -11,11 +11,11 @@ tablaJuanagrama::tablaJuanagrama (){
 int tablaJuanagrama::hash(string palabra) {
     int id = 0;
     for(int i = 0; i<palabra.length(); i++){
-        id = id + palabra[i];
+        id = id + (palabra[i]*67);
     }
     if (id<0)
     {
-        id = id * -1;
+        id = id * (-1);
     }
     
     return id % TAMANO;
@@ -25,7 +25,7 @@ int tablaJuanagrama::hash(string palabra) {
     string k = palabra;
     int id = hash(k);
 
-    //TODO: comprobar que no se repita
+
     list<string>::iterator itLista = listaPalabras[id].begin();
 
 	while (itLista != listaPalabras[id].end() && (*itLista).compare(palabra) < 0){
@@ -53,11 +53,19 @@ int tablaJuanagrama::hash(string palabra) {
 		return true;
 	}
  }
+
+string ordenarAlfabeticamente(string str) {
+    sort(str.begin(), str.end());
+    return str;
+}
 string tablaJuanagrama::anagrama(string palabra){
-    list<string>::iterator itLista= listaPalabras[hash(palabra)].begin();
-    while (itLista != listaPalabras[hash(palabra)].end())
+    int id=hash(palabra);
+    list<string>::iterator itLista= listaPalabras[id].begin();
+    while (itLista != listaPalabras[id].end())
     {
-        if(consulta(*itLista)){
+        string palabraOrdenada = ordenarAlfabeticamente(*itLista);
+        string palabraOrdenada2 = ordenarAlfabeticamente(palabra);
+        if(palabraOrdenada.compare(palabraOrdenada2) == 0){
             return *itLista;
         }
         itLista++;

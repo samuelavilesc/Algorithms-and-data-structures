@@ -56,7 +56,12 @@ void juanagra(){
     string palabra;
     cin>>palabra;
     palabra = normalizarPalabra(palabra);
-    cout<<"Juanagrama: "<<palabra<<" -> "<<diccionario.juanagra(palabra)<<endl;
+    string anagrama = diccionario.juanagra(palabra);
+    if(anagrama.length()> 0){
+        cout<<"Juanagrama: "<<palabra<<" -> "<<anagrama<<endl;
+        return;
+    }
+    cout<<"Juanagrama: "<<palabra<<" ->"<<endl;
 }
 void saco(){
     string palabra;
