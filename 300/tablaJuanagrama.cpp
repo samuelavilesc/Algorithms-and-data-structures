@@ -7,18 +7,19 @@ int tablaJuanagrama::nTotal(){
 tablaJuanagrama::tablaJuanagrama (){
     nElem = 0;
 }
-//TODO: revisar funcion de dispersion no funciona bien con caracteres especiales
+string ordenarAlfabeticamente(string str) {
+    sort(str.begin(), str.end());
+    return str;
+}
 int tablaJuanagrama::hash(string palabra) {
-    int id = 0;
-    for(int i = 0; i<palabra.length(); i++){
-        id = id + (palabra[i]*67);
+    string pal=ordenarAlfabeticamente(palabra);
+    unsigned long hash = 5381;
+    int c;
+    for (int i = 0; i < pal.length(); i++) {
+        c = pal[i];
+        hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
     }
-    if (id<0)
-    {
-        id = id * (-1);
-    }
-    
-    return id % TAMANO;
+    return hash % TAMANO;
 }
 
  void tablaJuanagrama::inserta (string palabra){
@@ -54,23 +55,25 @@ int tablaJuanagrama::hash(string palabra) {
 	}
  }
 
-string ordenarAlfabeticamente(string str) {
-    sort(str.begin(), str.end());
-    return str;
-}
+
 string tablaJuanagrama::anagrama(string palabra){
-    int id=hash(palabra);
+    string palabraOrdenada= ordenarAlfabeticamente(palabra);
+    int id = hash(palabra);
+    string anagrama="";
     list<string>::iterator itLista= listaPalabras[id].begin();
     while (itLista != listaPalabras[id].end())
     {
-        string palabraOrdenada = ordenarAlfabeticamente(*itLista);
-        string palabraOrdenada2 = ordenarAlfabeticamente(palabra);
-        if(palabraOrdenada.compare(palabraOrdenada2) == 0){
-            return *itLista;
+        if((*itLista).length() == palabra.length()){
+            string aux = ordenarAlfabeticamente(*itLista);
+            if(aux==palabraOrdenada){
+                if(anagrama>(*itLista) || anagrama==""){
+                    anagrama = (*itLista);
+                }
+            }
         }
         itLista++;
-    }
-    return "";
+}
+return anagrama;
 }
  void tablaJuanagrama::vacia (){
     for(int i = 0; i<TAMANO; i++){
