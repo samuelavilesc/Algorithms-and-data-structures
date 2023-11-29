@@ -5,7 +5,6 @@
 #include "normalizarPalabra.h"
 #include "diccionarioPalabras.h"
 using namespace std;
-diccionarioPalabras diccionario;
 void insertar();
 void buscar();
 void partidas();

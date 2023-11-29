@@ -1,4 +1,5 @@
 #include "interprete.h"
+diccionarioPalabras diccionario;
 void insertar(){
     int i=0;
     string palabra;
