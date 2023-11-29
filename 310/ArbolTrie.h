@@ -13,6 +13,7 @@ class NodoTrie {
         ~NodoTrie();
         NodoTrie* consulta(char letra);
         void inserta(char letra, NodoTrie *p);
+        void vaciarRecursivo();
 };
 
 class ArbolTrie {

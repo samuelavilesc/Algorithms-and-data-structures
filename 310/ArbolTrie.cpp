@@ -7,15 +7,28 @@ NodoTrie::NodoTrie() {
 }
 
 NodoTrie::~NodoTrie() {
-    delete sig;
-    delete ptr;
+   NodoTrie* h = ptr;
+    while (h != NULL) {
+        NodoTrie* aux = h->sig;
+        delete h;
+        h = aux;
+    }
 }
 
+void NodoTrie::vaciarRecursivo(){
+    NodoTrie* h = ptr;
+    while (h != NULL) {
+        NodoTrie* aux = h->sig;
+        h->vaciarRecursivo();
+        delete h;
+        h = aux;
+    }
+    ptr = NULL;
 
+}
 void NodoTrie::inserta(char letra, NodoTrie *p) {
     NodoTrie* nodo = new NodoTrie();
     nodo->letra = letra;
-    nodo->ptr = p;
     if (this->ptr == NULL) {
         this->ptr = nodo;
     } else {
@@ -42,6 +55,7 @@ ArbolTrie::ArbolTrie() {
 }
 
 ArbolTrie::~ArbolTrie() {
+    raiz->vaciarRecursivo();
     delete raiz;
 }
 
