@@ -45,7 +45,7 @@ ArbolTrie::~ArbolTrie() {
     delete raiz;
 }
 
-void ArbolTrie::insertar(string palabra) {
+void ArbolTrie::insertar(string& palabra) {
     NodoTrie* nodo = raiz;
     for (char letra : palabra) {
         NodoTrie* sig = nodo->consulta(letra);
@@ -61,7 +61,7 @@ void ArbolTrie::insertar(string palabra) {
     }
 }
 
-bool ArbolTrie::consultar(string palabra) {
+bool ArbolTrie::consultar(string& palabra) {
     NodoTrie* nodo = raiz;
     for (char letra : palabra) {
         nodo = nodo->consulta(letra);
@@ -82,7 +82,7 @@ int ArbolTrie::numElem() {
     return nElem;
 }
 
-int longitudPalabra(string palabra){
+int ArbolTrie::longitudPalabra(string& palabra){
     int longitud=0;
     long unsigned int i=0;
     while(i<palabra.length()){
@@ -107,7 +107,7 @@ int longitudPalabra(string palabra){
     }
     return longitud;
 }
-string ArbolTrie::alarga(string prefijo) {
+string ArbolTrie::alarga(string& prefijo) {
     NodoTrie* nodo = raiz;
     string palabraMasLarga="";
     string salida="";

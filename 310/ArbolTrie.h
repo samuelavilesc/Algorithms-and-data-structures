@@ -19,14 +19,15 @@ class ArbolTrie {
     private:
         NodoTrie *raiz;
         int nElem;
+        int longitudPalabra(string& palabra);
     public:
         ArbolTrie();
         ~ArbolTrie();
-        void insertar(string palabra);
-        bool consultar(string palabra);
+        void insertar(string& palabra);
+        bool consultar(string& palabra);
         int numElem(void);
         void vaciar(void);
-        string alarga(string prefijo);
+        string alarga(string& prefijo);
 };
 
 #endif

@@ -7,20 +7,22 @@
 #include <algorithm>
 using namespace std;
 
-#define TAMANO 1024
+const int TAMANO_INICIAL = 1024;
 
 class tablaJuanagrama {
   private:
-     list<string> listaPalabras[TAMANO];
+     list<string> *listaPalabras;
      int nElem;
+     string ordenarAlfabeticamente(string palabra);
   public:
      tablaJuanagrama ();
+      ~tablaJuanagrama ();
      int hash (string k);
-     void inserta (string palabra);
-     bool consulta(string palabra);
+     void inserta (string& palabra);
+     bool consulta(string& palabra);
      void vacia (void);
      int nTotal (void);
-     string anagrama(string palabra);
+     string anagrama(string& palabra);
 };
 
 #endif

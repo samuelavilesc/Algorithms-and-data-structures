@@ -8,15 +8,16 @@
 using namespace std;
 class diccionarioPalabras{
 private:
-    tablaJuanagrama Juanagrama;
-    ArbolTrie arbol;
+    tablaJuanagrama* Juanagrama;
+    ArbolTrie* arbol;
 public:
 diccionarioPalabras();
-void insertarPalabra(const string palabra);
-bool consultarPalabra(const string palabra);
+void insertarPalabra(string& palabra);
+bool consultarPalabra(string& palabra);
 void vaciarDiccionario();
 int devolverTamano();
-string alarga(string prefijo);
-string juanagra(string palabra);
+string alarga(string& prefijo);
+string juanagra(string& palabra);
+void liberarMemoria();
 };
 #endif

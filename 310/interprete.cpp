@@ -8,7 +8,8 @@ void insertar(){
         if(palabra == "</insertar>"){
             break;
         }
-        diccionario.insertarPalabra(normalizarPalabra(palabra)); //dice el enunciado que no guardamos las palabras
+        palabra = normalizarPalabra(palabra);
+        diccionario.insertarPalabra(palabra); //dice el enunciado que no guardamos las palabras
         i++;                                    //asi que solo ponemos el nombre de la clave, el valor es la cadena vacia
     }
     cout<<"Insertando: "<<i<<" palabras"<<endl;
@@ -122,6 +123,7 @@ void elegir() {
             alarga();
         }else if(comando == "<exit>"){
             cout << "Saliendo..."<<endl;
+            diccionario.liberarMemoria();
             exit(0);
         }else{
             continue;

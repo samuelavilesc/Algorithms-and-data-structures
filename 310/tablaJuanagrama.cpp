@@ -3,11 +3,15 @@
 int tablaJuanagrama::nTotal(){
     return nElem;
 }
-
+tablaJuanagrama::~tablaJuanagrama (){
+    vacia();
+    delete[] listaPalabras;
+}
 tablaJuanagrama::tablaJuanagrama (){
     nElem = 0;
+    listaPalabras = new list<string>[TAMANO_INICIAL];
 }
-string ordenarAlfabeticamente(string str) {
+string tablaJuanagrama::ordenarAlfabeticamente(string str) {
     sort(str.begin(), str.end());
     return str;
 }
@@ -19,10 +23,10 @@ int tablaJuanagrama::hash(string palabra) {
         c = pal[i];
         hash = ((hash << 5) + hash) + c; /* hash * 33 + c */
     }
-    return hash % TAMANO;
+    return hash % TAMANO_INICIAL;
 }
 
- void tablaJuanagrama::inserta (string palabra){
+ void tablaJuanagrama::inserta (string& palabra){
     string k = palabra;
     int id = hash(k);
 
@@ -40,7 +44,7 @@ int tablaJuanagrama::hash(string palabra) {
 	}
  }
 
- bool tablaJuanagrama::consulta (string nombre){
+ bool tablaJuanagrama::consulta (string& nombre){
     int id = hash(nombre);
 
     list<string>::iterator itLista = listaPalabras[id].begin();
@@ -56,7 +60,7 @@ int tablaJuanagrama::hash(string palabra) {
  }
 
 
-string tablaJuanagrama::anagrama(string palabra){
+string tablaJuanagrama::anagrama(string& palabra){
     string palabraOrdenada= ordenarAlfabeticamente(palabra);
     int id = hash(palabra);
     string anagrama="";
@@ -76,7 +80,7 @@ string tablaJuanagrama::anagrama(string palabra){
 return anagrama;
 }
  void tablaJuanagrama::vacia (){
-    for(int i = 0; i<TAMANO; i++){
+    for(int i = 0; i<TAMANO_INICIAL; i++){
         listaPalabras[i].clear();
     }
     nElem = 0;
